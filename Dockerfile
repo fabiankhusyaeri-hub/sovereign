@@ -1,4 +1,4 @@
-FROM php:8.2-fpm
+FROM php:8.4-fpm
 
 RUN apt-get update && apt-get install -y \
     git \
@@ -18,7 +18,6 @@ WORKDIR /var/www
 
 COPY . .
 
-# Menggunakan --ignore-platform-reqs agar tidak terhalang versi dependency
 RUN composer install --no-interaction --optimize-autoloader --no-dev --ignore-platform-reqs
 
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
