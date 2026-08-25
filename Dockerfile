@@ -1,7 +1,5 @@
 FROM php:8.4-fpm
 
-# Install Node.js & NPM untuk build CSS/JS Vite
-RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
 RUN apt-get update && apt-get install -y \
     git \
     curl \
@@ -9,8 +7,7 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     zip \
-    unzip \
-    nodejs
+    unzip
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
@@ -22,7 +19,6 @@ WORKDIR /var/www
 COPY . .
 
 RUN composer install --no-interaction --optimize-autoloader --no-dev --ignore-platform-reqs
-RUN npm install && npm run build
 
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
 
