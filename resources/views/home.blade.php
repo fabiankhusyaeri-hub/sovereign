@@ -1161,7 +1161,7 @@
   </footer>
 
   <!-- ===================================================
-        MODAL POP-UPS
+       MODAL POP-UPS
        =================================================== -->
 
   <!-- MODAL SERVICES FOOTER -->
@@ -1408,6 +1408,81 @@
 
   <!-- MODAL SPECIFIC JAVASCRIPT -->
   <script>
+    // Data Konten Services Modal Footer
+    const servicesData = {
+      warranty: {
+        tag: "WARRANTY & SERVICE",
+        title: "5-Year Official International Warranty",
+        content: `
+          <p>Setiap jam tangan <strong>Sovereign</strong> dilindungi oleh garansi resmi internasional selama 5 tahun sejak tanggal pembelian.</p>
+          <p><strong>Cakupan Garansi Meliputi:</strong></p>
+          <ul style="padding-left: 20px; margin: 0;">
+            <li>Perbaikan & kalibrasi ulang akurasi mesin/movement (COSC Standard).</li>
+            <li>Penggantian komponen internal yang cacat produksi.</li>
+            <li>Pengecekan ulang & pengujian ketahanan air (Water Resistance 5-10 ATM).</li>
+          </ul>
+          <p>Layanan servis dapat dilakukan di seluruh authorized service center kami di Bandung, Jakarta, dan Surabaya.</p>
+        `
+      },
+      authentication: {
+        tag: "AUTHENTICATION",
+        title: "Certificate of Authenticity & Verification",
+        content: `
+          <p>Setiap unit Sovereign dilengkapi dengan <strong>Certificate of Authenticity</strong> fisik bertanda tangan CEO serta nomor seri unik (Serial Number) yang terukir pada caseback jam.</p>
+          <p>Kami menjamin 100% keaslian material 316L Stainless Steel, kaca Sapphire Crystal anti-reflektif, hingga strap Alligator Leather bersertifikat resmi.</p>
+        `
+      },
+      shipping: {
+        tag: "SHIPPING & DELIVERY",
+        title: "Insured Global & Nationwide Shipping",
+        content: `
+          <p>Kami menyediakan layanan pengiriman dengan asuransi penuh (Full Value Insurance) untuk memastikan keamanan waktu perjalanan jam tangan Anda.</p>
+          <ul style="padding-left: 20px; margin: 0;">
+            <li><strong>Pengiriman Domestik:</strong> Gratis ongkos kirim ke seluruh Indonesia menggunakan kurir prioritas (1-3 hari kerja).</li>
+            <li><strong>Pengambilan di Showroom:</strong> Anda dapat memilih opsi Pre-Order dan mengambil unit langsung di Boutique Bandung, Jakarta, atau Surabaya.</li>
+          </ul>
+        `
+      },
+      privacy: {
+        tag: "PRIVACY POLICY",
+        title: "Privacy & Data Protection Policy",
+        content: `
+          <p>Sovereign menghargai privasi dan kerahasiaan data pribadi Anda. Seluruh informasi yang Anda berikan saat melakukan pendaftaran janji temu (appointment), pre-order, atau langganan newsletter akan disimpan secara aman.</p>
+          <p>Data Anda tidak akan pernah dijual atau dibagikan kepada pihak ketiga di luar kepentingan pemrosesan layanan dan komunikasi eksklusif Sovereign Circle.</p>
+        `
+      },
+      terms: {
+        tag: "TERMS & CONDITIONS",
+        title: "Terms & Conditions of Service",
+        content: `
+          <p>Dengan mengakses situs web ini dan melakukan pemesanan/reservasi janji temu, Anda menyetujui syarat & ketentuan yang berlaku di Sovereign Horlogerie.</p>
+          <ul style="padding-left: 20px; margin: 0;">
+            <li>Alokasi unit <em>Limited Edition</em> diproses berdasarkan urutan konfirmasi reservasi (First-Come, First-Served).</li>
+            <li>Jadwal visit showroom dapat diubah maksimal 24 jam sebelum waktu janji temu yang disepakati.</li>
+          </ul>
+        `
+      }
+    };
+
+    // Open Service Modal Function
+    function openServiceModal(serviceKey) {
+      const data = servicesData[serviceKey];
+      if (data) {
+        document.getElementById('service_modal_tag').innerText = data.tag;
+        document.getElementById('service_modal_title').innerText = data.title;
+        document.getElementById('service_modal_content').innerHTML = data.content;
+        
+        const modal = document.getElementById('service-info-modal');
+        if (modal) modal.style.display = 'flex';
+      }
+    }
+
+    // Close Service Modal Function
+    function closeServiceModal() {
+      const modal = document.getElementById('service-info-modal');
+      if (modal) modal.style.display = 'none';
+    }
+
     // Complete Article Data (English)
     const articlesData = {
       art1: {
