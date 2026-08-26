@@ -260,9 +260,13 @@
           </form>
         </div>
       @else
-        <a href="{{ route('login') }}" class="nav-btn" style="text-decoration: none; font-size: 11px;">
-          LOGIN
-        </a>
+        <!-- TOMBOL LOGIN HANYA MUNCUL DI DEVICE KAMU (?admin=true) -->
+        @if(request()->query('admin') === 'true' || session('is_admin_device'))
+          @php session(['is_admin_device' => true]); @endphp
+          <a href="{{ route('login') }}" class="nav-btn" style="text-decoration: none; font-size: 11px;">
+            LOGIN
+          </a>
+        @endif
       @endauth
 
       <button onclick="openAppointmentModal('General Showroom Visit')" class="btn-gold-outline" style="padding: 6px 14px; font-size: 10px; letter-spacing: 0.12em; border-color: var(--gold); cursor: pointer;">
@@ -303,9 +307,13 @@
         </button>
       </form>
     @else
-      <a href="{{ route('login') }}" class="nav-btn" style="display: block; width: 100%; text-align: left; padding: 8px 0; text-decoration: none;">
-        LOGIN
-      </a>
+      <!-- TOMBOL LOGIN MOBILE (DEVICE SENDIRI) -->
+      @if(request()->query('admin') === 'true' || session('is_admin_device'))
+        @php session(['is_admin_device' => true]); @endphp
+        <a href="{{ route('login') }}" class="nav-btn" style="display: block; width: 100%; text-align: left; padding: 8px 0; text-decoration: none;">
+          LOGIN
+        </a>
+      @endif
     @endauth
 
     <button onclick="openAppointmentModal('General Showroom Visit')" class="btn-gold-outline" style="display: block; width: 100%; text-align: center; margin-top: 10px; padding: 8px 0;">APPOINTMENT</button>
@@ -373,7 +381,7 @@
     </div>
   </section>
 
-  <!-- VALUE STRIP (TELAH DITAMBAHKAN STATISTIK JUMLAH KARYAWAN) -->
+  <!-- VALUE STRIP -->
   <div style="border-top: 1px solid var(--border-gold); border-bottom: 1px solid var(--border-gold); background: var(--bg-card);">
     <div class="container value-strip-grid" style="display: grid; grid-template-columns: repeat(5, 1fr);">
       <div class="value-strip-item" style="text-align: center; padding: 28px 12px; border-right: 1px solid rgba(196,160,98,0.12);">
@@ -440,7 +448,7 @@
     </div>
   </section>
 
-  <!-- SECTION TIM DAN ANGGOTA PERUSAHAAN (KEY EXECUTIVES & WORKFORCE) -->
+  <!-- SECTION TIM DAN ANGGOTA PERUSAHAAN -->
   <section id="team" style="background: var(--bg-dark); padding: 100px 24px; border-top: 1px solid var(--border-gold);">
     <div class="container">
       <div style="text-align: center; margin-bottom: 60px;">
@@ -452,7 +460,6 @@
          A team of executives and leading experts who dedicate a vision of precision and high aesthetics to every Sovereign masterpiece.
         </p>
 
-        <!-- INFORMASI JUMLAH TOTAL KARYAWAN -->
         <div style="display: inline-flex; align-items: center; gap: 12px; border: 1px solid rgba(196,160,98,0.25); background: rgba(196,160,98,0.05); padding: 8px 20px; margin-top: 24px;">
           <i data-lucide="users" style="width: 14px; height: 14px; color: var(--gold);"></i>
           <span style="font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 500;">
@@ -805,7 +812,6 @@
           </div>
         </div>
       </div>
-      <!-- AKHIR KOTAK SERTIFIKAT -->
 
       <!-- TOMBOL PERSIS DI BAWAH KOTAK SERTIFIKAT -->
       <div style="text-align: center; margin-top: 48px;">
@@ -1091,22 +1097,28 @@
             Encapsulating time in beauty and precision since 2008. Every Sovereign is a promise of timelessness.
           </p>
           
-          <!-- Official Social Media Links -->
-          <div style="display: flex; gap: 10px; align-items: center; margin-top: 16px;">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram" style="display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">
-              <i data-lucide="instagram" style="width: 14px; height: 14px;"></i>
-            </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="Facebook" style="display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">
-              <i data-lucide="facebook" style="width: 14px; height: 14px;"></i>
-            </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="Twitter / X" style="display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">
-              <i data-lucide="twitter" style="width: 14px; height: 14px;"></i>
-            </a>
-            
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="LinkedIn" style="display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">
-              <i data-lucide="linkedin" style="width: 14px; height: 14px;"></i>
-            </a>
-          </div>
+<!-- Official Social Media Links -->
+<div style="display: flex; gap: 10px; align-items: center; margin-top: 16px;">
+    <!-- Instagram -->
+    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+    </a>
+
+    <!-- Facebook -->
+    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="Facebook">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+    </a>
+
+    <!-- Twitter / X -->
+    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="Twitter / X">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+    </a>
+
+    <!-- LinkedIn -->
+    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="LinkedIn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+    </a>
+</div>
         </div>
 
         <div>
@@ -1141,7 +1153,7 @@
       </div>
 
       <div style="border-top: 1px solid rgba(196,160,98,0.12); padding-top: 32px; margin-top: 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 12px; color: var(--text-dim);">
-        <p>© 2025 Sovereign Horlogerie. All rights reserved.</p>
+        <p>© 2026 Sovereign Horlogerie. All rights reserved.</p>
         <p>Reg. No / NIB: 9120008471092 · License: W-8821/2008</p>
         <p>Crafted with dedication in Bandung, Indonesia · info@sovereign.id</p>
       </div>
@@ -1149,7 +1161,7 @@
   </footer>
 
   <!-- ===================================================
-       MODAL POP-UPS
+        MODAL POP-UPS
        =================================================== -->
 
   <!-- MODAL SERVICES FOOTER -->

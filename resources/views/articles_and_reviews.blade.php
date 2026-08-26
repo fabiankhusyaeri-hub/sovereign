@@ -118,7 +118,7 @@
           <div style="display: flex; flex-direction: column; gap: 24px;">
             
             <article class="card-dark" style="display: flex; gap: 20px; align-items: center;">
-              <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=400&auto=format&fit=crop" alt="Article 1" style="width: 140px; height: 110px; object-fit: cover; filter: brightness(0.85);">
+              <img src="https://omniluxe.id/cdn/shop/files/ROLEXDAYTONAPANDA-1.jpg?v=1787565534&width=700" alt="Article 1" style="width: 140px; height: 110px; object-fit: cover; filter: brightness(0.85);">
               <div>
                 <span style="font-size: 9px; color: #c4a062; letter-spacing: 0.2em; text-transform: uppercase;">Craftsmanship — May 2026</span>
                 <h3 style="font-family: 'Cormorant', serif; font-size: 20px; color: #fff; margin: 6px 0; font-weight: 400;">The Art of Hand-Finished Tourbillon Calibers</h3>
@@ -128,7 +128,7 @@
             </article>
 
             <article class="card-dark" style="display: flex; gap: 20px; align-items: center;">
-              <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=400&auto=format&fit=crop" alt="Article 2" style="width: 140px; height: 110px; object-fit: cover; filter: brightness(0.85);">
+              <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=400&auto=format&fit=crop" alt="Article 2" style="width: 140px; height: 110px; object-fit: cover; filter: brightness(0.85);">
               <div>
                 <span style="font-size: 9px; color: #c4a062; letter-spacing: 0.2em; text-transform: uppercase;">Materials — April 2026</span>
                 <h3 style="font-family: 'Cormorant', serif; font-size: 20px; color: #fff; margin: 6px 0; font-weight: 400;">18K Rose Gold & Meteorite Dial Finishes</h3>
@@ -138,7 +138,7 @@
             </article>
 
             <article class="card-dark" style="display: flex; gap: 20px; align-items: center;">
-              <img src="https://images.unsplash.com/photo-1547996160-012745cc583b?q=80&w=400&auto=format&fit=crop" alt="Article 3" style="width: 140px; height: 110px; object-fit: cover; filter: brightness(0.85);">
+              <img src="https://omniluxe.id/cdn/shop/files/ap-royal-oak-offshore-chrono-_6.jpg?v=1787138881&width=700" alt="Article 3" style="width: 140px; height: 110px; object-fit: cover; filter: brightness(0.85);">
               <div>
                 <span style="font-size: 9px; color: #c4a062; letter-spacing: 0.2em; text-transform: uppercase;">Heritage — March 2026</span>
                 <h3 style="font-family: 'Cormorant', serif; font-size: 20px; color: #fff; margin: 6px 0; font-weight: 400;">Understanding COSC Accuracy & Testing</h3>
