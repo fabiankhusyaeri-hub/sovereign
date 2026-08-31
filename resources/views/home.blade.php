@@ -472,7 +472,7 @@
         <!-- CEO / Founder -->
         <div class="team-card" style="padding: 32px; text-align: center;">
           <div style="width: 130px; height: 130px; border-radius: 50%; overflow: hidden; margin: 0 auto 24px; border: 2px solid var(--gold); background: #111;">
-            <img src="{{ asset('images/fa.png') }}" alt="M Fabiah Khusyaeri" style="width: 100%; height: 100%; object-fit: cover;">
+            <img src="{{ asset('images/fabi.png') }}" alt="M Fabiah Khusyaeri" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
           <h3 style="font-family: 'Cormorant', serif; font-size: 24px; color: var(--text-main); margin-bottom: 4px; font-weight: 400;">M Fabiah Khusyaeri</h3>
           <p style="font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px;">CEO & Master Horloger</p>
