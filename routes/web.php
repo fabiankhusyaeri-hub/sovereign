@@ -52,4 +52,9 @@ Route::middleware(['auth', AdminMiddleware::class])->prefix('admin')->group(func
     Route::delete('/appointments/{id}', [AdminController::class, 'destroy'])->name('admin.appointments.destroy');
 });
 
+Route::get('/run-migrate', function () {
+    \Illuminate\Support\Facades\Artisan::call('migrate --force');
+    return 'Migrasi Database Aiven Berhasil!';
+});
+
 require __DIR__.'/auth.php';
