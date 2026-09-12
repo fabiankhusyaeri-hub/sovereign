@@ -60,11 +60,13 @@ Route::get('/run-migrate', function () {
     return 'Migrasi Database Aiven Berhasil!';
 });
 
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+// 5. Route Khusus Admin Dashboard (Terproteksi Login & Admin Role)
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
     Route::patch('/appointments/{id}/status', [AdminController::class, 'updateStatus'])->name('appointments.updateStatus');
     Route::delete('/appointments/{id}', [AdminController::class, 'destroy'])->name('appointments.destroy');
 });
+
 
 Route::post('/appointment', [AppointmentController::class, 'store'])->name('appointment.store');
 
