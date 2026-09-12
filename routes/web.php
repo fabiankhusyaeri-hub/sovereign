@@ -5,6 +5,8 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AdminController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 
 // 1. Halaman Utama Website SOVEREIGN
@@ -55,6 +57,27 @@ Route::middleware(['auth', AdminMiddleware::class])->prefix('admin')->group(func
 Route::get('/run-migrate', function () {
     \Illuminate\Support\Facades\Artisan::call('migrate --force');
     return 'Migrasi Database Aiven Berhasil!';
+});
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::patch('/appointments/{id}/status', [AdminController::class, 'updateStatus'])->name('appointments.updateStatus');
+    Route::delete('/appointments/{id}', [AdminController::class, 'destroy'])->name('appointments.destroy');
+});
+
+Route::post('/appointment', [AppointmentController::class, 'store'])->name('appointment.store');
+
+Route::get('/create-admin-now', function () {
+    $admin = User::updateOrCreate(
+        ['email' => 'admin@sovereign.com'],
+        [
+            'name'     => 'Admin Sovereign',
+            'password' => Hash::make('password123'),
+            'role'     => 'admin',
+        ]
+    );
+
+    return "AKUN ADMIN BERHASIL DIBUAT DI AIVEN!<br>Email: <b>{$admin->email}</b><br>Password: <b>password123</b>";
 });
 
 require __DIR__.'/auth.php';
