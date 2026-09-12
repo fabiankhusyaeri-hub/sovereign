@@ -7,6 +7,7 @@ use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Support\Facades\Artisan;
 
 
 // 1. Halaman Utama Website SOVEREIGN
@@ -67,17 +68,26 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 Route::post('/appointment', [AppointmentController::class, 'store'])->name('appointment.store');
 
-Route::get('/create-admin-now', function () {
-    $admin = User::updateOrCreate(
-        ['email' => 'admin@sovereign.com'],
-        [
-            'name'     => 'Admin Sovereign',
-            'password' => Hash::make('password123'),
-            'role'     => 'admin',
-        ]
-    );
+Route::get('/fix-admin-role', function () {
+    $user = \App\Models\User::where('email', 'admin@sovereign.com')->first();
+    
+    if ($user) {
+        $user->update([
+            'role' => 'admin',
+            'password' => \Illuminate\Support\Facades\Hash::make('password123'),
+        ]);
+        return "Role akun admin@sovereign.com BERHA~~SIL diubah menjadi ADMIN!";
+    }
 
-    return "AKUN ADMIN BERHASIL DIBUAT DI AIVEN!<br>Email: <b>{$admin->email}</b><br>Password: <b>password123</b>";
+    // Jika akun belum ada sama sekali di DB Aiven, otomatis buatkan baru sebagai admin:
+    $newAdmin = \App\Models\User::create([
+        'name'     => 'Admin Sovereign',
+        'email'    => 'admin@sovereign.com',
+        'password' => \Illuminate\Support\Facades\Hash::make('password123'),
+        'role'     => 'admin',
+    ]);
+
+    return "Akun Admin Baru BERHASIL dibuat di Aiven!<br>Email: admin@sovereign.com<br>Role: admin";
 });
 
 require __DIR__.'/auth.php';
