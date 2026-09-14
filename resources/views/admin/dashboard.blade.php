@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Concierge Dashboard — SOVEREIGN</title>
+
+  <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}?v={{ time() }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -60,7 +62,7 @@
       <h1 class="brand-title">SOVEREIGN</h1>
       <p class="brand-sub">Concierge Appointment Management</p>
     </div>
-    <a href="{{ url('/') }}" class="btn-back">&larr; KEMBALI KE WEBSITE</a>
+    <a href="{{ url('/') }}" class="btn-back">&larr; RETURN TO WEBSITE</a>
   </div>
 
   @if(session('success'))
@@ -72,39 +74,39 @@
   <!-- Ringkasan Statistik -->
   <div class="stats-grid">
     <div class="stat-card">
-      <h4>Total Permohonan</h4>
+      <h4>Total Applications</h4>
       <div class="value">{{ count($appointments) }}</div>
     </div>
     <div class="stat-card">
-      <h4>Status Pending</h4>
+      <h4>Pending Status</h4>
       <div class="value" style="color: #ffc107;">{{ $totalPending }}</div>
     </div>
     <div class="stat-card">
-      <h4>Status Approved</h4>
+      <h4>Approved Status</h4>
       <div class="value" style="color: #28a745;">{{ $totalApproved }}</div>
     </div>
     <div class="stat-card">
-      <h4>Selesai (Completed)</h4>
+      <h4>Completed Status</h4>
       <div class="value" style="color: #17a2b8;">{{ $totalCompleted }}</div>
     </div>
   </div>
 
   <!-- Tabel Data Appointments -->
-  <h3 style="margin-bottom: 16px; font-size: 16px; color: var(--gold);">DAFTAR JANJI TEMU & PRE-ORDER</h3>
+  <h3 style="margin-bottom: 16px; font-size: 16px; color: var(--gold);">APPOINTMENT & PRE-ORDER LIST</h3>
   
   <div class="table-container">
     <table>
       <thead>
         <tr>
           <th>ID</th>
-          <th>Nama Lengkap</th>
-          <th>Kontak</th>
-          <th>Model Jam</th>
+          <th>Full Name</th>
+          <th>Contact</th>
+          <th>Watch Model</th>
           <th>Showroom</th>
-          <th>Tanggal & Waktu</th>
+          <th>Date & Time</th>
           <th>Status</th>
-          <th>Aksi Status</th>
-          <th>Hapus</th>
+            <th>Status Action</th>
+            <th>Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -156,7 +158,7 @@
         @empty
           <tr>
             <td colspan="9" style="text-align: center; color: var(--text-muted); padding: 32px;">
-              Belum ada data permohonan janji temu.
+              No appointment data available.
             </td>
           </tr>
         @endforelse
