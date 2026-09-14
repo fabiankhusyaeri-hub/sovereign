@@ -5,6 +5,9 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AdminController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use Illuminate\Support\Facades\Artisan;
 
 
 // 1. Halaman Utama Website SOVEREIGN
@@ -55,6 +58,38 @@ Route::middleware(['auth', AdminMiddleware::class])->prefix('admin')->group(func
 Route::get('/run-migrate', function () {
     \Illuminate\Support\Facades\Artisan::call('migrate --force');
     return 'Migrasi Database Aiven Berhasil!';
+});
+
+// 5. Route Khusus Admin Dashboard (Terproteksi Login & Admin Role)
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+    Route::patch('/appointments/{id}/status', [AdminController::class, 'updateStatus'])->name('appointments.updateStatus');
+    Route::delete('/appointments/{id}', [AdminController::class, 'destroy'])->name('appointments.destroy');
+});
+
+
+Route::post('/appointment', [AppointmentController::class, 'store'])->name('appointment.store');
+
+Route::get('/fix-admin-role', function () {
+    $user = \App\Models\User::where('email', 'admin@sovereign.com')->first();
+    
+    if ($user) {
+        $user->update([
+            'role' => 'admin',
+            'password' => \Illuminate\Support\Facades\Hash::make('password123'),
+        ]);
+        return "Role akun admin@sovereign.com BERHA~~SIL diubah menjadi ADMIN!";
+    }
+
+    // Jika akun belum ada sama sekali di DB Aiven, otomatis buatkan baru sebagai admin:
+    $newAdmin = \App\Models\User::create([
+        'name'     => 'Admin Sovereign',
+        'email'    => 'admin@sovereign.com',
+        'password' => \Illuminate\Support\Facades\Hash::make('password123'),
+        'role'     => 'admin',
+    ]);
+
+    return "Akun Admin Baru BERHASIL dibuat di Aiven!<br>Email: admin@sovereign.com<br>Role: admin";
 });
 
 require __DIR__.'/auth.php';
