@@ -142,7 +142,7 @@
           <div style="position: absolute; top: 12px; left: 12px; background: rgba(196,160,98,0.15); border: 1px solid var(--gold); padding: 4px 10px; font-size: 9px; color: var(--gold); letter-spacing: 0.2em; z-index: 2;">
             1ST FLOOR PLAN (SHOWROOM & OFFICES)
           </div>
-          <img src="{{ asset('images/denah.png') }}" alt="Sovereign Atelier Blueprint - Floor 1" style="width: 100%; height: auto; display: block; filter: brightness(0.9) contrast(1.1); margin-top: 24px;">
+          <img src="{{ asset('images/new1.png') }}" alt="Sovereign Atelier Blueprint - Floor 1" style="width: 100%; height: auto; display: block; filter: brightness(0.9) contrast(1.1); margin-top: 24px;">
         </div>
 
         <!-- Denah Lantai 2 -->
@@ -150,7 +150,7 @@
           <div style="position: absolute; top: 12px; left: 12px; background: rgba(196,160,98,0.15); border: 1px solid var(--gold); padding: 4px 10px; font-size: 9px; color: var(--gold); letter-spacing: 0.2em; z-index: 2;">
             2ND FLOOR PLAN (ATELIER & CLEANROOM)
           </div>
-          <img src="{{ asset('images/denah2.png') }}" alt="Sovereign Atelier Blueprint - Floor 2" style="width: 100%; height: auto; display: block; filter: brightness(0.9) contrast(1.1); margin-top: 24px;">
+          <img src="{{ asset('images/new.png') }}" alt="Sovereign Atelier Blueprint - Floor 2" style="width: 100%; height: auto; display: block; filter: brightness(0.9) contrast(1.1); margin-top: 24px;">
         </div>
       </div>
 
